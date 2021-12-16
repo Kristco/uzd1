@@ -1,34 +1,38 @@
-# Užd1 Failų sugeneravimas ir suskirstymas į skirtingas grupes
+# Užd1 Failų sugeneravimas ir suskirstymas į skirtingas grupes naudojant skirtingas strategijas
 
-Ši programa sugeneruoja 5 skirtingų dydžių studentų failus (1 000, 10 000, 100 000, 1 000 000, 10 000 000), kuriuose yra po 7 namų darbus. Apskaičiuoja galutinį pažymį pagal vidurkį ir tada padalina į 2 skirtingus failus. Programos išvedimas yra programos veikimo greičio analizė, kaip greitai programa atlieka tam tikrus veiksmus. Yra naudojama **std::list**
+Ši programa sugeneruoja 5 skirtingų dydžių studentų failus (1 000, 10 000, 100 000, 1 000 000, 10 000 000), kuriuose yra po 7 namų darbus. Apskaičiuoja galutinį pažymį pagal vidurkį ir tada padalina į 2 skirtingus grupes. Programos išvedimas yra programos veikimo greičio analizė naudojant 2 skirtingas strategijas bei 2 skirtingus konteinerius. Yra naudojama **std::list** ir **std::vector** konteineriai.
 
-Išvestis atrodo taip:
-
-![image](https://user-images.githubusercontent.com/69794082/139396566-42832e63-3827-4b89-8d11-ed6de7b3c0e2.png)
 
 Sistemos parametrai: 
 - CPU - 6 Core, 12 Threads, Base clock speed 2,9Ghz
 - RAM - 16GB 2666Mhz
 - SSD - Read/Write 3500/3000 MB/s
 
-Programos buvo bandomos po 5 kartus
+List konteinerio greičiai:
+1) 100000: 0.0608 sec.
+1000000: 0.628 sec.
+2) 100000 0.0748 sec.
+1000000 0.69 sec.
 
-Rezultatų vidurkis su **std::vector**:
-- 1000 -- 0,0286sec;
-- 10000 -- 0,0787sec;
-- 100000 -- 0,584sec;
-- 1000000 -- 5,804sec;
-- 10000000 -- 62,89sec.
+Vector konteinerio greičiai:
+1) 100000 0.025 sec.
+1000000 0.27 sec.
+2) 100000 0.041 sec.
+1000000 0.42 sec.
 
-Rezultatų vidurkis su **std::list**:
-- 1000 -- 0,0121sec; (-58%)
-- 10000 -- 0,0674sec; (-14%)
-- 100000 -- 0,622sec;  (+7%)
-- 1000000 -- 6,052sec;  (+4%)
-- 10000000 -- 59,76sec.  (-5%)
+Vector konteineris yra geresnis šiai paskirčiai, tačiau antra strategija deja nėra labiau greitesnė.
 
-Vidutiniškai programam 13% veikia grečiau negu su **std::vector**
+Siekiant įsidiegti šia programą reikia:
+1) Parsisiųsti ją iš Github.
+2) Sukompiliuokite ant savo kompiuteriu naudojant CMakeList failą.
 
 
 Komentarai:
-Kodas beveik nesiskiria nuo 0.4, tik visur kur buvo vector pakeičiau į list ir naudojau iteratorius. Jaučiu reiktų dar truputi optimizuoti, kad nebūtų vector greičiau prie 100 000 ir 1 000 000 sąrašo
+Stebėtinai antra strategija lėčiau veikia negu pirma per abu konteinerius, tai galėjo atsitikti nes buvo vis dėlto ne taip optimaliai realizuotas kodas naudojant std algoritmus.
+
+- [V0.1](https://github.com/Kristco/uzd1/releases/tag/0.1.4) - Pirmoji versija.
+- [V0.2](https://github.com/Kristco/uzd1/releases/tag/0.2.2) - Antroji versija. Duomenis galima nuskaityti iš failų.
+- [V0.3](https://github.com/Kristco/uzd1/releases/tag/0.3.2) - Trečioji versija. Pridėti header failai ir klaidų valdymas.
+- [V0.4](https://github.com/Kristco/uzd1/releases/tag/0.4.2) - Ketvirtoji versija. Atliekama programos greičio analizė.
+- [V0.5](https://github.com/Kristco/uzd1/releases/tag/0.5.2) - Penktoji versija. Pakeistas konteineris iš vector į list. Palyginta su skirtingu ketvirtos versijos sparta.
+- [V1.0](https://github.com/Kristco/uzd1/releases/tag/1.2) - Naujausia programos versija. Grupavimas atliekamas 2 skirtingomis strategijomis, palyginta jų sparta.
